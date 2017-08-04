@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Vue Instance</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://vuejs.org/js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{greet('afternoon')}}</h1>
+        <p>Name: {{name}}</p>
+        <p>Favourite: {{favourite}}</p>
+        <!-- data binding to attribute with v-bind -->
+        <a v-bind:href="website">sina</a>
+        <!-- or shorthand : -->
+        <a :href="website">sina</a>
+
+        <input type="text" :value="name">
+        <!-- output a html string to the tag -->
+        <p v-html="template">inner text no show</p>
+        <!-- only the string -->
+        <p v-text="template">inner text no show</p>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>
