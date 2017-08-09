@@ -3,26 +3,26 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Vue Instance</title>
+    <title>Vue Event</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://vuejs.org/js/vue.js"></script>
 </head>
 
 <body>
     <div id="app">
-        <h1>{{greet('afternoon')}}</h1>
-        <p>Name: {{name}}</p>
-        <p>Favourite: {{favourite}}</p>
-        <!-- data binding to attribute with v-bind -->
-        <a v-bind:href="website">sina</a>
-        <!-- or shorthand : -->
-        <a :href="website">sina</a>
+        <h1>Event</h1>
+        <!-- using expression, age is vue instance data  -->
+        <button @click="age++">Click to Add a Year</button>
+        <button @dblclick="age+=10">Double click to Add 10 Year</button>
+        <!-- using function, externalize our code into the view instance itself -->
+        <button @click="subtract(1)">Click to subtract a Year</button>
+        <button @dblclick="subtract(10)">Double click to subtract 10 Year</button>
+        <p>My age is {{age}}</p>
 
-        <input type="text" :value="name">
-        <!-- output a html string to the tag -->
-        <p v-html="template">inner text no show</p>
-        <!-- only the string -->
-        <p v-text="template">inner text no show</p>
+        <!-- fire function can be without parenthese -->
+        <div id="canvas" @mousemove="updateXY">
+            {{x}} , {{y}}
+        </div>
     </div>
     <script src="app.js"></script>
 </body>
