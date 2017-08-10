@@ -4,24 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <title>Vue Event</title>
-    <link rel="stylesheet" href="style.css">
     <script src="https://vuejs.org/js/vue.js"></script>
 </head>
 
 <body>
     <div id="app">
-        <h1>Event</h1>
-        <!-- using expression, age is vue instance data  -->
-        <button @click="age++">Click to Add a Year</button>
-        <button @dblclick="age+=10">Double click to Add 10 Year</button>
-        <!-- using function, externalize our code into the view instance itself -->
-        <button @click="subtract(1)">Click to subtract a Year</button>
-        <button @dblclick="subtract(10)">Double click to subtract 10 Year</button>
+        <h1>Event Modifiers</h1>
+        <!-- once modifier: fire only once -->
+        <button @click.once="age">Click to add 1 Year</button>
         <p>My age is {{age}}</p>
 
-        <!-- fire function can be without parenthese -->
-        <div id="canvas" @mousemove="updateXY">
-            {{x}} , {{y}}
+        <a @click.prevent="clicked" href="www.sina.com.cn">sina</a>
+
+        <br/><br/><br/>
+        <!-- keyboard events and modifiers -->
+        <div>
+            <p>
+                <!-- enter modifier: fired when enter press -->
+                <label>Name<input type="text" @keydown.enter="log"></label>
+            </p>
+            <p>
+                <!-- combine with more modifer -->
+                <label>Favourate<input type="text" @keydown.enter.alt="log"></label>
+            </p>
         </div>
     </div>
     <script src="app.js"></script>

@@ -3,17 +3,18 @@ var vue = new Vue({
     el: '#app',
     data: {
         age: 30,
-        x: 0,
-        y: 0
+        name: 'kirin'
     },
     methods: {
-        subtract: function(num){
-            this.age -= num;
+        add: function(num){
+            this.age += num;
         },
         // first param will be event if no parma pass
-        updateXY: function(event){
-            this.x = event.clientX;
-            this.y = event.clientY;
+        clicked: function(){
+            alert('clicked');
+        },
+        log: function(e) {
+            console.log('type something...');
         }
     }
 });
