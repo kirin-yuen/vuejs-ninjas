@@ -3,29 +3,35 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Vue Event</title>
+    <title>Vue two way data binding</title>
     <script src="https://vuejs.org/js/vue.js"></script>
 </head>
 
 <body>
     <div id="app">
-        <h1>Event Modifiers</h1>
-        <!-- once modifier: fire only once -->
-        <button @click.once="age">Click to add 1 Year</button>
-        <p>My age is {{age}}</p>
-
-        <a @click.prevent="clicked" href="www.sina.com.cn">sina</a>
-
-        <br/><br/><br/>
+        <h1>Vue two way data binding</h1>
         <!-- keyboard events and modifiers -->
         <div>
             <p>
                 <!-- enter modifier: fired when enter press -->
-                <label>Name<input type="text" @keydown.enter="log"></label>
+                <label>My name
+                    <input type="text" @keydown="update">
+                </label>
+                {{myName}}
             </p>
             <p>
                 <!-- combine with more modifer -->
-                <label>Favourate<input type="text" @keydown.enter.alt="log"></label>
+                <label>Your name
+                    <input type="text" v-model="yourName">
+                </label>
+                {{yourName}}
+            </p>
+            <p>
+                <!-- v-model syntactic sugar -->
+                <label>His name
+                    <input type="text" :value="hisName" @input="hisName=$event.target.value">
+                </label>
+                {{hisName}}
             </p>
         </div>
     </div>
