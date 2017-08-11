@@ -3,27 +3,23 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Computed properites</title>
+    <title>Dynamic CSS Classes</title>
     <script src="https://vuejs.org/js/vue.js"></script>
+    <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
     <div id="app">
-        <h1>Computed properites</h1>
-        <!-- using computed propertites more efficient and quicker -->        
-        <div>
-            <button @click="a++">Add to A</button>
-            <button @click="b++">Add to B</button>
-            <p>A - {{a}}</p>
-            <p>B - {{b}}</p>
-            <h3>Call vue methods here and get return the string </h3>
-            <!-- it will fire all of the methods that render to dom -->
-            <p>Age + A = {{addToA()}}</p>
-            <p>Age + B = {{addToB()}}</p>
-            <h3>Computed propertie</h3>
-            <!-- only fire which values update -->
-            <p>Age + A = {{resultA}}</p>            
-            <p>Age + B = {{resultB}}</p>
+        <h1>Dynamic CSS Classes</h1>
+        <!-- key is class name, value true/false to active the class of key -->
+        <div :class="{available: available}">
+            <span @click="available = !available">Click me</span>
+        </div>
+        <hr>
+        <button @click="nearby = !nearby">Toggle nearby</button>
+        <button @click="available = !available">Toggle available</button>
+        <div :class="compClasses">
+            <span>Yuen</span>
         </div>
     </div>
     <script src="app.js"></script>
