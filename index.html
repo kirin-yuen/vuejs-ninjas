@@ -3,36 +3,27 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Vue two way data binding</title>
+    <title>Computed properites</title>
     <script src="https://vuejs.org/js/vue.js"></script>
 </head>
 
 <body>
     <div id="app">
-        <h1>Vue two way data binding</h1>
-        <!-- keyboard events and modifiers -->
+        <h1>Computed properites</h1>
+        <!-- using computed propertites more efficient and quicker -->        
         <div>
-            <p>
-                <!-- enter modifier: fired when enter press -->
-                <label>My name
-                    <input type="text" @keydown="update">
-                </label>
-                {{myName}}
-            </p>
-            <p>
-                <!-- combine with more modifer -->
-                <label>Your name
-                    <input type="text" v-model="yourName">
-                </label>
-                {{yourName}}
-            </p>
-            <p>
-                <!-- v-model syntactic sugar -->
-                <label>His name
-                    <input type="text" :value="hisName" @input="hisName=$event.target.value">
-                </label>
-                {{hisName}}
-            </p>
+            <button @click="a++">Add to A</button>
+            <button @click="b++">Add to B</button>
+            <p>A - {{a}}</p>
+            <p>B - {{b}}</p>
+            <h3>Call vue methods here and get return the string </h3>
+            <!-- it will fire all of the methods that render to dom -->
+            <p>Age + A = {{addToA()}}</p>
+            <p>Age + B = {{addToB()}}</p>
+            <h3>Computed propertie</h3>
+            <!-- only fire which values update -->
+            <p>Age + A = {{resultA}}</p>            
+            <p>Age + B = {{resultB}}</p>
         </div>
     </div>
     <script src="app.js"></script>
