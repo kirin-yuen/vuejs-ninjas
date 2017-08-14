@@ -3,24 +3,26 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Dynamic CSS Classes</title>
+    <title>Conditional</title>
     <script src="https://vuejs.org/js/vue.js"></script>
     <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
     <div id="app">
-        <h1>Dynamic CSS Classes</h1>
-        <!-- key is class name, value true/false to active the class of key -->
-        <div :class="{available: available}">
-            <span @click="available = !available">Click me</span>
-        </div>
-        <hr>
-        <button @click="nearby = !nearby">Toggle nearby</button>
-        <button @click="available = !available">Toggle available</button>
-        <div :class="compClasses">
-            <span>Yuen</span>
-        </div>
+        <h1>Conditional</h1>
+        
+        <button @click="error = !error">Toggle Error</button>
+        <button @click="success = !success">Toggle Success</button>
+        <h3>v-if</h3>
+        <p v-if="error">Error comes out :(</p>
+        <!-- v-else-if: show only v-if false even 'success' is true -->
+        <p v-else-if="success">It's success :)</p>
+
+        <h3>v-show</h3>
+        <!-- v-show do not take the element out of DOM -->
+        <p v-show="error">Error comes out :(</p>
+        <p v-show="success">It's success :)</p>
     </div>
     <script src="app.js"></script>
 </body>
