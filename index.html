@@ -3,26 +3,31 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Conditional</title>
+    <title>Looping with v-for</title>
     <script src="https://vuejs.org/js/vue.js"></script>
     <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
     <div id="app">
-        <h1>Conditional</h1>
-        
-        <button @click="error = !error">Toggle Error</button>
-        <button @click="success = !success">Toggle Success</button>
-        <h3>v-if</h3>
-        <p v-if="error">Error comes out :(</p>
-        <!-- v-else-if: show only v-if false even 'success' is true -->
-        <p v-else-if="success">It's success :)</p>
-
-        <h3>v-show</h3>
-        <!-- v-show do not take the element out of DOM -->
-        <p v-show="error">Error comes out :(</p>
-        <p v-show="success">It's success :)</p>
+        <h1>cycle through with v-for</h1>
+        <ul>
+            <li v-for="(fav, index) in favourites">
+                {{index}} - {{fav}}
+            </li>
+        </ul>
+        <!-- template will only output p -->
+        <template v-for="friend, index in friends">
+            <p>
+                {{index}} - {{friend.name}} --- {{friend.age}}
+            </p>
+        </template>
+        <h1>cycle through object</h1>
+        <template v-for="friend in friends">
+            <p v-for="val, key in friend">
+                {{key}} - {{val}}
+            </p>
+        </template>
     </div>
     <script src="app.js"></script>
 </body>
