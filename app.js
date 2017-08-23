@@ -1,13 +1,32 @@
-var vue = new Vue({
-    // which tag is going to be take over by vue
-    el: '#app',
+var one = new Vue({
+    el: '#one',
     data: {
-        favourites: ['aikido', 'drum', 'football'],
-        friends: [
-            {name: 'robert', age: 30},
-            {name: 'forwhy', age: 30},
-            {name: 'yudian', age: 30},
-            {name: 'jiaming', age: 30}
-        ]
+        title: "vue app one"
+    },
+    computed: {
+        greet: function(){
+            return 'hello vue app one';
+        }
     }
 });
+
+
+var two = new Vue({
+    el: '#two',
+    data: {
+        title: "vue app two"
+    },
+    computed: {
+        greet: function(){
+            return 'hello vue app two';
+        }
+    },
+    methods: {
+        change: function(){
+            // communicate with another vue instantce via variable one 
+            one.title = "Title changed";
+        }
+    }
+});
+
+two.title = "Change from outside";

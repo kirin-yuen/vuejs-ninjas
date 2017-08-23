@@ -3,31 +3,24 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Looping with v-for</title>
+    <title>Multiple vue instances</title>
     <script src="https://vuejs.org/js/vue.js"></script>
     <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
-    <div id="app">
-        <h1>cycle through with v-for</h1>
-        <ul>
-            <li v-for="(fav, index) in favourites">
-                {{index}} - {{fav}}
-            </li>
-        </ul>
-        <!-- template will only output p -->
-        <template v-for="friend, index in friends">
-            <p>
-                {{index}} - {{friend.name}} --- {{friend.age}}
-            </p>
-        </template>
-        <h1>cycle through object</h1>
-        <template v-for="friend in friends">
-            <p v-for="val, key in friend">
-                {{key}} - {{val}}
-            </p>
-        </template>
+    <h1>create multiple vue instance to control different sections</h1>
+    <div id="one">
+        <h2>{{title}}</h2>
+        <p>{{greet}}</p>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div id="two">
+        <h2>{{title}}</h2>
+        <p>{{greet}}</p>
+        <button @click="change">Change app one title</button>
     </div>
     <script src="app.js"></script>
 </body>
