@@ -3,17 +3,22 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Vue components</title>
+    <title>Vue refs</title>
     <script src="https://vuejs.org/js/vue.js"></script>
     <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
-    <h1>Vue components</h1>    
+    <h1>Vue refs</h1>    
 
     <div id="app">
-        <conponent-global></conponent-global>
-        <conponent-local></conponent-local>
+        <!-- markup the element with vuejs via ref-->
+        <input type="text" ref="myInput1">
+        <button @click="update('myInput1')">Update data</button>
+        
+        <!-- use refs to implement v-model -->
+        <input placeholder="use refs to implement v-model" type="text" ref="myInput2" @input="update('myInput2')">
+        <p>{{output}}</p>
     </div>
 
     <script src="app.js"></script>
