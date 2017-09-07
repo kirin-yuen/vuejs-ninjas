@@ -3,25 +3,19 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Multiple vue instances</title>
+    <title>Vue components</title>
     <script src="https://vuejs.org/js/vue.js"></script>
     <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
-    <h1>create multiple vue instance to control different sections</h1>
-    <div id="one">
-        <h2>{{title}}</h2>
-        <p>{{greet}}</p>
+    <h1>Vue components</h1>    
+
+    <div id="app">
+        <conponent-global></conponent-global>
+        <conponent-local></conponent-local>
     </div>
-    <br>
-    <br>
-    <br>
-    <div id="two">
-        <h2>{{title}}</h2>
-        <p>{{greet}}</p>
-        <button @click="change">Change app one title</button>
-    </div>
+
     <script src="app.js"></script>
 </body>
 

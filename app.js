@@ -1,32 +1,25 @@
-var one = new Vue({
-    el: '#one',
-    data: {
-        title: "vue app one"
-    },
-    computed: {
-        greet: function(){
-            return 'hello vue app one';
+// golbal register component before initialize vue instance
+Vue.component('conponent-global', {
+    template: '<p>{{title}}</p>',
+    // conponent data should be a function and return a fresh object to avoid sharing data
+    data: function(){
+        return {
+            title: 'Vue global component'
         }
     }
 });
 
-
-var two = new Vue({
-    el: '#two',
-    data: {
-        title: "vue app two"
-    },
-    computed: {
-        greet: function(){
-            return 'hello vue app two';
-        }
-    },
-    methods: {
-        change: function(){
-            // communicate with another vue instantce via variable one 
-            one.title = "Title changed";
+var a = new Vue({
+    el: '#app',
+    // local register component
+    components: {
+        'conponent-local': {
+            template: '<p>{{title}}</p>',
+            data: function(){
+                return {
+                    title: 'Vue local component'
+                }
+            }
         }
     }
 });
-
-two.title = "Change from outside";
