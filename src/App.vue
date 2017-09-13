@@ -1,24 +1,25 @@
 <template>
-    <!-- same as the templte porperty that Vue.conponent('app', {template: '<div></div>'}) -->
-    <!-- only one root element on top -->
+    <!-- 
+        components: we can code it once and nest it to other components for serval times if need. For large application split our code to different components, we can nest those component in the root component
+     -->
     <div>
         <h1>{{title}}</h1>
-        <p>{{greeting()}}</p>
+        <!-- globally register in main.js via Vue.component() -->
+        <global-conponent></global-conponent>
+        <local-conponent></local-conponent>
     </div>
 </template>
 <script>
-// same as the option object that Vue.conponent('app', {})
 export default {
     // name: 'app',
     data() {
         return {
-            title: 'Your first vue file,wooo!'
+            title: 'Nesting components'
         }
     },
-    methods: {
-        greeting(){
-            return 'heeey cow boy~'
-        }
+    // locally register via components
+    components:{
+        'local-conponent': require('./Local-component.vue')
     }
 }
 </script>
