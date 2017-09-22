@@ -1,7 +1,8 @@
 <template>
     <div>
-        <h1>{{title}}</h1>
+        <Header></Header>
         <Ninja></Ninja>
+        <Footer></Footer>
     </div>
 </template>
 <script>
@@ -9,21 +10,17 @@ export default {
     // name: 'app',
     data() {
         return {
-            title: 'Scope css'
+            title: 'Component Examples'
         }
     },
     // locally register via components
     components:{
-        Ninja: require('./Ninja.vue')
+        Header: require('./components/Header.vue'),
+        Footer: require('./components/Footer.vue'),
+        Ninja: require('./components/Ninja.vue')
     }
 }
 </script>
 <!-- no scoped attr will affect globally -->
-<style>
-h1 {
-    background: red;
-}
-p {
-    color :green;
-}
+<style scoped>
 </style>
