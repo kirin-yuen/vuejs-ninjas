@@ -1,7 +1,7 @@
 <template>
     <header>
         <h1>{{title}}</h1>
-        <p>{{text}}</p>
+        <button @click="change">emit event</button>
     </header>
 </template>
 
@@ -15,6 +15,14 @@ export default {
         title: 'Component Examples',
         text: 'This is Ninjas Header'
     };
+  },
+  methods: {
+    change(){
+        var data = 'change...';
+        this.title = data;
+        // emit an event to parent component
+        this.$emit('emitChange', data);
+    }
   }
 };
 </script>

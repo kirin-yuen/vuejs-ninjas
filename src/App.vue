@@ -1,9 +1,10 @@
 <template>
     <div>
-        <myHeader></myHeader>
+        <!-- listent emitChange event and hander it -->
+        <myHeader @emitChange="getChange"></myHeader>
         <!-- pass props to child components -->
         <ninja :propNinjas="ninjas"></ninja>
-        <my-footer></my-footer>
+        <my-footer :myTitle="title"></my-footer>
     </div>
 </template>
 <script>
@@ -11,7 +12,7 @@ export default {
     // name: 'app',
     data() {
         return {
-            title: 'Props',
+            title: 'Events, child to parent',
             ninjas: [
                 { name: 'Ryu', speciality: 'Vue Components', show: false },
                 { name: 'Crystal', speciality: 'HTML Wizardry', show: false },
@@ -20,6 +21,11 @@ export default {
                 { name: 'Kami', speciality: 'Webpack', show: false },
                 { name: 'Yoshi', speciality: 'Data Diggin', show: false }
             ]
+        }
+    },
+    methods: {
+        getChange(data){
+            this.title = data;
         }
     },
     // locally register via components

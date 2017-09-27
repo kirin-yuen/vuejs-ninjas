@@ -1,6 +1,7 @@
 <template>
     <footer>
         <p>{{copyright}}</p>
+        <p>{{myTitle}}</p>
     </footer>
 </template>
 
@@ -8,7 +9,9 @@
 export default {
 
   name: 'Footer',
-
+  props: [
+    'myTitle'
+  ],
   data () {
     return {
         copyright: 'Copyright 2017 vuejs',
