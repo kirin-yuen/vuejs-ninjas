@@ -1,8 +1,9 @@
 <template>
     <div>
-        <Header></Header>
-        <Ninja></Ninja>
-        <Footer></Footer>
+        <myHeader></myHeader>
+        <!-- pass props to child components -->
+        <ninja :propNinjas="ninjas"></ninja>
+        <my-footer></my-footer>
     </div>
 </template>
 <script>
@@ -10,14 +11,22 @@ export default {
     // name: 'app',
     data() {
         return {
-            title: 'Component Examples'
+            title: 'Props',
+            ninjas: [
+                { name: 'Ryu', speciality: 'Vue Components', show: false },
+                { name: 'Crystal', speciality: 'HTML Wizardry', show: false },
+                { name: 'Hitoshi', speciality: 'Click Events', show: false },
+                { name: 'Tango', speciality: 'Conditionals', show: false },
+                { name: 'Kami', speciality: 'Webpack', show: false },
+                { name: 'Yoshi', speciality: 'Data Diggin', show: false }
+            ]
         }
     },
     // locally register via components
     components:{
-        Header: require('./components/Header.vue'),
-        Footer: require('./components/Footer.vue'),
-        Ninja: require('./components/Ninja.vue')
+        myHeader: require('./components/Header.vue'),
+        myFooter: require('./components/Footer.vue'),
+        ninja: require('./components/Ninja.vue')
     }
 }
 </script>
