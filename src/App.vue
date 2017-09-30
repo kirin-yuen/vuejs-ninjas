@@ -1,9 +1,16 @@
 <template>
     <div>
-        <myHeader></myHeader>
-        <!-- pass props to child components -->
-        <ninja :propNinjas="ninjas"></ninja>
-        <my-footer></my-footer>
+        <my-slot :html="html">
+        <!-- pass html content down to child component 
+            using slot, although coule be html string via prop 
+        -->
+            <div slot="title" class="header">
+                <h1>{{title}}</h1>
+            </div>
+            <div slot="text" class="text">
+                <p>hey slot...</p>
+            </div>
+        </my-slot>
     </div>
 </template>
 <script>
@@ -11,24 +18,15 @@ export default {
     // name: 'app',
     data() {
         return {
-            title: 'Events bus, a vue instance can be emit and listen even and react to them',
-            ninjas: [
-                { name: 'Ryu', speciality: 'Vue Components', show: false },
-                { name: 'Crystal', speciality: 'HTML Wizardry', show: false },
-                { name: 'Hitoshi', speciality: 'Click Events', show: false },
-                { name: 'Tango', speciality: 'Conditionals', show: false },
-                { name: 'Kami', speciality: 'Webpack', show: false },
-                { name: 'Yoshi', speciality: 'Data Diggin', show: false }
-            ]
+            title: 'Slot',
+            html: '<p class="text">hey html string...</p>'
         }
     },
     methods: {
     },
     // locally register via components
     components:{
-        myHeader: require('./components/Header.vue'),
-        myFooter: require('./components/Footer.vue'),
-        ninja: require('./components/Ninja.vue')
+        mySlot: require('./my-slot.vue')
     }
 }
 </script>
