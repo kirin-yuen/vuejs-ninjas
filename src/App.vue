@@ -1,10 +1,9 @@
 <template>
     <div>
-        <!-- listent emitChange event and hander it -->
-        <myHeader @emitChange="getChange"></myHeader>
+        <myHeader></myHeader>
         <!-- pass props to child components -->
         <ninja :propNinjas="ninjas"></ninja>
-        <my-footer :myTitle="title"></my-footer>
+        <my-footer></my-footer>
     </div>
 </template>
 <script>
@@ -12,7 +11,7 @@ export default {
     // name: 'app',
     data() {
         return {
-            title: 'Events, child to parent',
+            title: 'Events bus, a vue instance can be emit and listen even and react to them',
             ninjas: [
                 { name: 'Ryu', speciality: 'Vue Components', show: false },
                 { name: 'Crystal', speciality: 'HTML Wizardry', show: false },
@@ -24,9 +23,6 @@ export default {
         }
     },
     methods: {
-        getChange(data){
-            this.title = data;
-        }
     },
     // locally register via components
     components:{

@@ -1,11 +1,14 @@
 <template>
     <header>
         <h1>{{title}}</h1>
-        <button @click="change">emit event</button>
+        <p>Not just communicate from child component to child component indirectly using root component</p>
+        <button @click="change">Event bus emit event</button>
     </header>
 </template>
 
 <script>
+import Bus from '../Event-bus';
+
 export default {
 
   name: 'Header',
@@ -21,7 +24,7 @@ export default {
         var data = 'change...';
         this.title = data;
         // emit an event to parent component
-        this.$emit('emitChange', data);
+        Bus.$emit('emitChange', data);
     }
   }
 };
