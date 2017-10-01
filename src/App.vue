@@ -1,16 +1,23 @@
 <template>
     <div>
-        <my-slot :html="html">
-        <!-- pass html content down to child component 
-            using slot, although coule be html string via prop 
-        -->
-            <div slot="title" class="header">
-                <h1>{{title}}</h1>
-            </div>
-            <div slot="text" class="text">
-                <p>hey slot...</p>
-            </div>
-        </my-slot>
+        <h1>{{title}}</h1>
+        <hr>
+
+        <h2>switch component via v-show</h2>
+        <formOne v-show="flag"></formOne>
+        <formTwo v-show="!flag"></formTwo>
+        <button @click="flag = !flag">switch</button>
+
+        <h2>switch component via components tag</h2>
+        <!-- switch will create a new instance and go through lifecycle again via component-->
+        <!-- we can use keep-alive to retain the data -->
+        <keep-alive>            
+            <component :is="shownComponet"></component>
+        </keep-alive>
+        <select v-model="shownComponet">
+            <option value="formOne">login form</option>
+            <option value="formTwo">register form</option>
+        </select>
     </div>
 </template>
 <script>
@@ -18,15 +25,15 @@ export default {
     // name: 'app',
     data() {
         return {
-            title: 'Slot',
-            html: '<p class="text">hey html string...</p>'
+            title: 'dynamic component',
+            flag: true,
+            shownComponet: 'formOne'
         }
-    },
-    methods: {
     },
     // locally register via components
     components:{
-        mySlot: require('./my-slot.vue')
+        formOne: require('./form-one.vue'),
+        formTwo: require('./form-two.vue')
     }
 }
 </script>
