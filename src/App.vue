@@ -1,8 +1,7 @@
 <template>
     <div>
         <h1>{{title}}</h1>
-        <my-form></my-form>
-
+        <show-blog></show-blog>
     </div>
 </template>
 <script>
@@ -10,15 +9,22 @@ export default {
     // name: 'app',
     data() {
         return {
-            title: 'input binding'
+            title: 'vue-resource'
         }
     },
     // locally register via components
     components:{
-        'my-form': require('./form.vue')
+        'show-blog': require('./show-blog.vue')
     }
 }
 </script>
 <!-- no scoped attr will affect globally -->
-<style scoped>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    h1 {
+        text-align: center;
+    }
 </style>
