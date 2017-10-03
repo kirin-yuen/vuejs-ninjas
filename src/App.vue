@@ -13,18 +13,19 @@ export default {
         }
     },
     // locally register via components
-    components:{
+    components: {
         'show-blog': require('./show-blog.vue')
     }
 }
 </script>
 <!-- no scoped attr will affect globally -->
 <style>
-    body {
-        margin: 0;
-        padding: 0;
-    }
-    h1 {
-        text-align: center;
-    }
+body {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+}
 </style>
