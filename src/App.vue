@@ -9,7 +9,7 @@ export default {
     // name: 'app',
     data() {
         return {
-            title: 'vue-resource'
+            title: 'custome directive'
         }
     },
     // locally register via components

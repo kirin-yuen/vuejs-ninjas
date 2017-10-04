@@ -1,13 +1,24 @@
 <template>
-    <div id="show-blog">
-        <label>
-            How many posts do you want to show?
-            <input :disabled="loading.isLoading" type="number" min="0" :max="posts.length" v-model="number" @input="change">
-            <input :disabled="loading.isLoading" type="range" v-model="number" @change="change">
-        </label>
+    <!-- directive with arg(lightblue) and value(theme) -->
+    <div id="show-blog" v-theme:lightblue="theme">
+        <p>
+            <label>
+                How many posts do you want to show?
+                <input :disabled="loading.isLoading" type="number" min="0" :max="posts.length" v-model="number" @input="change">
+                <input :disabled="loading.isLoading" type="range" v-model="number" @change="change">
+            </label>
+        </p>
+        <p>
+            View as
+            <select v-model="theme">
+                <option value="wide">wide</option>
+                <option value="narrow">narrow</option>
+            </select>
+        </p>
         <div class="posts">
             <div class="post" v-for="post,$index in postsShown">
-                <h3>{{$index + 1}} - {{post.title}}</h3>
+                <!-- only directive -->
+                <h3 v-rainbow>{{$index + 1}} - {{post.title}}</h3>
                 <article>{{post.body}}</article>
             </div>
         </div>
@@ -28,12 +39,13 @@ export default {
             posts: [],
             // show posts when number change
             postsShown: [],
-            // laading status  for loading component
+            // laading status for loading component
             loading: {
                 isLoading: true,
                 isSuccess: true
 
-            }
+            },
+            theme: 'narrow'
         };
     },
     created() {
@@ -58,8 +70,29 @@ export default {
     components: {
         'loading': require('./loading.vue')
     },
+    // locally custome directive
+    directives: {
+        'theme': {
+            bind(el, binding, vnode){
+                // directive arg in binding
+                if(binding.arg === 'lightblue'){
+                    el.style.backgroundColor = 'lightblue';
+                }
+            },
+            update(el, binding, vnode){
+                var wide = 'wide', narrow = 'narrow';
+
+                if(binding.value === wide) {
+                    el.className = wide;
+                } else if(binding.value === narrow) {
+                    el.className = narrow;
+                }
+            }
+        }
+    },
     methods: {
-        change() {
+        change() {            
+            // slice from origin posts
             this.postsShown = this.posts.slice(0, this.number);
         }
     }
@@ -68,6 +101,7 @@ export default {
 <style lang="css" scoped>
 #show-blog {
     text-align: center;
+    padding: 20px 0;
 }
 
 .posts {
@@ -83,9 +117,16 @@ export default {
 .post {
     margin: 10px;
     padding: 30px;
-    max-width: 300px;
     background-color: #eee;
     text-align: left;
+}
+
+.wide .post{
+    max-width: 600px;
+}
+
+.narrow .post{
+    max-width: 300px;
 }
 
 .post h3 {
